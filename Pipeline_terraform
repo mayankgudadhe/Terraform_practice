@@ -15,7 +15,7 @@ pipeline{
         }
         stage ("clone"){
             steps {
-                sh "git clone https://github.com/mayankgudadhe/Terraform_practice.git"
+                git branch: "main" , url: "https://github.com/mayankgudadhe/Terraform_practice.git"
             }
         }
         stage ("Create_Infra"){
