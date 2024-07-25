@@ -1,0 +1,30 @@
+pipeline{
+    agent {
+        label {
+            label "slave-1"
+            customWorkspace "/mnt/git"
+        }
+    }
+    stages{
+        stage ("Installations"){
+            steps {
+            sh "sudo yum install git -y"
+            sh "sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo"
+            sh "sudo yum install terraform -y"
+            }
+        }
+        stage ("clone"){
+            steps {
+                sh "git clone https://github.com/mayankgudadhe/Terraform_practice.git"
+            }
+        }
+        stage ("Create_Infra"){
+            steps {
+                dir ("/mnt/git/Terraform_practice"){
+                    sh "terraform init"
+                    sh "terraform apply --auto-approve"
+                }
+            }
+        }
+    }
+}
