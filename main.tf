@@ -23,7 +23,7 @@ resource "aws_internet_gateway" "IGW-B" {
 
 ######################## Creating_Public_subnet ####################
 resource "aws_subnet" "Subnet_B_Pub" {
-  vpc_id            = aws_vpc.VPC-A.id
+  vpc_id            = aws_vpc.VPC-B.id
   cidr_block        = "10.20.1.0/24"
   availability_zone = "ap-south-1a"
   tags = {
