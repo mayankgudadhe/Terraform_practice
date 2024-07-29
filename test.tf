@@ -1,3 +1,0 @@
-Hello all
-ok 
-Done
